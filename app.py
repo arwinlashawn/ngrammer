@@ -15,6 +15,6 @@ def ngrammer() -> dict:
     json_input = app.current_request.json_body
     order = json_input["order"]
     text = json_input["text"]
-    result = {i for i in ngrams(text.split(), order)}
+    result = [i for i in ngrams(text.split(), order)]
 
     return {"order": order, "ngrams": result}
