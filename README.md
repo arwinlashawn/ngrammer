@@ -2,11 +2,34 @@
 Some NLP stuff.
 
 ## Usage
-The API takes a body as follows:
+The API takes a request body as follows:
 ```
 {
-    "order": 2,
+    "order": 3,
     "text": "This is a beautiful world."
+}
+```
+And it returns a response body as follows:
+```
+{
+    "order": 3,
+    "ngrams": [
+        [
+            "This",
+            "is",
+            "a"
+        ],
+        [
+            "is",
+            "a",
+            "beautiful"
+        ],
+        [
+            "a",
+            "beautiful",
+            "world."
+        ]
+    ]
 }
 ```
 
