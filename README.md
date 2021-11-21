@@ -25,5 +25,4 @@ text6 = text1*100000 # 4400x slower than text1 processing time
 ### Ways to improve the response time of the API considering inputs will mostly be long essays
 * Implement caching of API response
 * Increase memory allocation for Lambda, which increases compute speed
-* Consider the use of `colibricore` library for faster n-gram sequence determination
-
+* Consider the use of [colibricore](https://pypi.org/project/colibricore/#description) library for more efficient n-gram sequence determination
