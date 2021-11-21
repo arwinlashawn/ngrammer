@@ -1,36 +1,22 @@
 from chalice import Chalice
+from nltk import ngrams
 
 app = Chalice(app_name='ngrammer')
 
 
-@app.route('/')
-def index():
-    return {'hello': 'world'}
+@app.route("/")
+def test():
+    return {"hello": "world"}
 
-@app.route('/ngrammer', methods=['POST'])
+@app.route("/ngrammer", methods=["POST"])
 def ngrammer():
-    # This is the JSON body the user sent in their POST request.
-    user_as_json = app.current_request.json_body
-    # We'll echo the json body back to the user in a 'user' key.
-    return {'user': user_as_json}
+    # to do: implement error handling, black and flake8 formatting
+    json_input = app.current_request.json_body
+    order = json_input["order"]
+    text = json_input["text"]
+    result = {i for i in ngrams(text.split(), order)}
 
-
-# The view function above will return {"hello": "world"}
-# whenever you make an HTTP GET request to '/'.
-#
-# Here are a few more examples:
-#
-# @app.route('/hello/{name}')
-# def hello_name(name):
-#    # '/hello/james' -> {"hello": "james"}
-#    return {'hello': name}
-#
-# @app.route('/users', methods=['POST'])
-# def create_user():
-#     # This is the JSON body the user sent in their POST request.
-#     user_as_json = app.current_request.json_body
-#     # We'll echo the json body back to the user in a 'user' key.
-#     return {'user': user_as_json}
-#
-# See the README documentation for more examples.
-#
+    return {
+    "order": order,
+    "ngrams": result
+    }
