@@ -16,7 +16,6 @@ def ngrammer() -> dict:
         order = int(json_input["order"])
         text = json_input["text"]
         result = [i for i in ngrams(text.split(), order)]
-
         return {"order": order, "ngrams": result}
     except KeyError:
         raise BadRequestError("Request body must contain these 2 keys: 'order', 'text'")
